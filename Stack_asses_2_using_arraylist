@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 public class Stack_asses_2 {
     public static void main(String[] args) {
         Stack1 a = new Stack1();
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the maximum size of the stack");
+        int size = sc.nextInt();
         int n;
         do{
             System.out.println("Choice 1 : Push");
@@ -17,7 +18,7 @@ public class Stack_asses_2 {
                 case 1 -> {
                     System.out.println("Enter the element to be pushed");
                     int val = sc.nextInt();
-                    a.push(val);
+                    a.push(val,size);
                 }
                 case 2 ->{
                     a.pop();
@@ -35,7 +36,9 @@ public class Stack_asses_2 {
 class Stack1{
     int top=-1;
     List<Integer> arr = new ArrayList<>();
-    public void push(int data){
+
+    public void push(int data,int size){
+        if(top+1 == size-1) {System.out.println("Stack is full");return;}
         top++;
         arr.add(data);
     }
