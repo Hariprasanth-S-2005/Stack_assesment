@@ -1,0 +1,89 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Stack_asses_3 {
+    public static void main(String[] args) {
+        Stack2 a = new Stack2();
+        Scanner sc = new Scanner(System.in);
+        int n;
+        do{
+            System.out.println("Choice 1 --- Push");
+            System.out.println("Choice 2 --- Pop");
+            System.out.println("Choice 3 --- display");
+            System.out.println("Choice 4 --- count");
+            System.out.println("Any other choice : Exit");
+            n = sc.nextInt();
+            switch (n){
+                case 1 -> {
+                    System.out.println("Enter the element to be pushed");
+                    int val = sc.nextInt();
+                    a.push(val);
+                }
+                case 2 ->{
+                    a.pop();
+                }
+                case 3 ->{
+                    a.display();
+                }
+                case 4 ->{
+                    a.peek();
+                }
+                default -> {
+                    return;
+                }
+            }
+        }while(true);
+    }
+}
+class Stack2{
+    Node top=null;
+    List<Integer> arr = new ArrayList<>();
+    public void push(int data){
+        Node n = new Node(data);
+        if(top ==null){
+            n.next = null;
+            top = n;
+        }else{
+            n.next = top;
+            top = n;
+        }
+    }
+    public void pop(){
+        if(top ==null){
+            System.out.println("Stack is empty");
+            return;
+        }
+        System.out.println("The popped element is :" + top.data);
+        Node temp = top;
+        top = top.next;
+        temp = null;
+    }
+    public void peek(){
+        if(top ==null){
+            System.out.println("Stsck is empty");
+            return;
+        }
+        System.out.println("Number of elements in the linked list is :" + top.data);
+    }
+    public void display(){
+        if(top ==null){
+            System.out.println("Stsck is empty");
+            return;
+        }
+        System.out.print("The contents of the stack are :");
+        Node temp = top;
+        while(temp != null){
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.print("\n");
+    }
+}
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+    }
+}
