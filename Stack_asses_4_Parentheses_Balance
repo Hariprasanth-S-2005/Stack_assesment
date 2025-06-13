@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Stack_asses_4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String[] arr = new String[n];
+        for(int i=0;i<n;i++){
+            arr[i] = sc.next();
+        }
+        for(int i=0;i<n;i++){
+            System.out.println((isTrue(arr[i]))?"Yes":"No");
+        }
+    }
+    public static boolean isTrue(String s){
+        Stack<Character> arr = new Stack<>();
+        for (int i=0;i<s.length();i++){
+            char temp = s.charAt(i);
+            if(temp == '(' || temp == '['){
+                arr.push(temp);
+            }else{
+                if(arr.isEmpty())return false;
+                char top = arr.pop();
+                if((temp == ')' && top != '(') || (temp == ']' && top != '[')){
+                    return false;
+                }
+            }
+        }
+        return arr.isEmpty();
+    }
+}
