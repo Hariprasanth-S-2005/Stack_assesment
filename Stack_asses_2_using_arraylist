@@ -1,0 +1,68 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Stack_asses_2 {
+    public static void main(String[] args) {
+        Stack1 a = new Stack1();
+        Scanner sc = new Scanner(System.in);
+        int n;
+        do{
+            System.out.println("Choice 1 : Push");
+            System.out.println("Choice 2 : Pop");
+            System.out.println("Choice 3 : Display");
+            System.out.println("Any other choice : Exit");
+            n = sc.nextInt();
+            switch (n){
+                case 1 -> {
+                    System.out.println("Enter the element to be pushed");
+                    int val = sc.nextInt();
+                    a.push(val);
+                }
+                case 2 ->{
+                    a.pop();
+                }
+                case 3 ->{
+                    a.display();
+                }
+                default -> {
+                    return;
+                }
+            }
+        }while(true);
+    }
+}
+class Stack1{
+    int top=-1;
+    List<Integer> arr = new ArrayList<>();
+    public void push(int data){
+        top++;
+        arr.add(data);
+    }
+    public void pop(){
+        if(top ==-1){
+            System.out.println("Stack is empty");
+            return;
+        }
+        System.out.println("The popped element is :" + arr.get(top));
+        arr.remove(top--);
+    }
+    public void peek(){
+        if(top ==-1){
+            System.out.println("Stsck is empty");
+            return;
+        }
+        System.out.println("peek element is :" + arr.get(top));
+    }
+    public void display(){
+        if(top ==-1){
+            System.out.println("Stsck is empty");
+            return;
+        }
+        System.out.print("The contents of the stack are :");
+        for(int i:arr){
+            System.out.print(i + " ");
+        }
+        System.out.print("\n");
+    }
+}
